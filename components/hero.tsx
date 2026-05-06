@@ -149,7 +149,9 @@ const WovenCanvas = () => {
 			originalPositions[i * 3 + 2] = z;
 
 			const color = new THREE.Color();
-			color.setHSL(Math.random(), 0.8, isDarkMode ? 0.5 : 0.7);
+			// color.setHSL(Math.random(), 0.8, isDarkMode ? 0.5 : 0.7);
+			color.setHSL(0.63 + Math.random() * 0.1, 0.9, 0.6);
+
 			colors[i * 3] = color.r;
 			colors[i * 3 + 1] = color.g;
 			colors[i * 3 + 2] = color.b;
