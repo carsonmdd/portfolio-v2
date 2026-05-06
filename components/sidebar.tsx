@@ -3,15 +3,11 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { site } from '@/lib/site';
-import {
-	AiOutlineMail,
-	AiOutlineLinkedin,
-	AiOutlineGithub,
-	AiFillLinkedin,
-} from 'react-icons/ai';
+import { AiOutlineMail, AiOutlineGithub, AiFillLinkedin } from 'react-icons/ai';
 
 const navLinks = [
 	{ label: 'Home', href: '/' },
+	{ label: 'About', href: '/about' },
 	{ label: 'Works', href: '/works' },
 	{ label: 'Gallery', href: '/gallery' },
 ];
