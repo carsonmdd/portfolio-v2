@@ -26,10 +26,10 @@ export function Sidebar() {
 								<li key={href}>
 									<Link
 										href={href}
-										className={`inline-block pb-1 text-xl uppercase tracking-[0.25em] transition-colors ${
+										className={`relative inline-block pb-1 text-xl uppercase tracking-[0.25em] transition-colors after:absolute after:left-0 after:-right-4 after:bottom-0 after:h-px after:origin-left after:bg-current after:transition-transform after:duration-300 ${
 											active
-												? 'border-b border-white/70 text-white dark:border-slate-900/70 dark:text-slate-900'
-												: 'text-white/40 hover:text-white dark:text-slate-500 dark:hover:text-slate-900'
+												? 'text-white after:scale-x-100 dark:text-slate-900'
+												: 'text-white/40 after:scale-x-0 hover:text-white hover:after:scale-x-100 dark:text-slate-500 dark:hover:text-slate-900'
 										}`}
 									>
 										{label}

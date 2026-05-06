@@ -11,12 +11,6 @@ export const Hero = () => {
 	const buttonControls = useAnimation();
 
 	useEffect(() => {
-		const link = document.createElement('link');
-		link.href =
-			'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400&display=swap';
-		link.rel = 'stylesheet';
-		document.head.appendChild(link);
-
 		textControls.start((i) => ({
 			opacity: 1,
 			y: 0,
@@ -30,10 +24,6 @@ export const Hero = () => {
 			opacity: 1,
 			transition: { delay: 2.2, duration: 1 },
 		});
-
-		return () => {
-			document.head.removeChild(link);
-		};
 	}, [textControls, buttonControls]);
 
 	const headline = site.name;
@@ -72,7 +62,7 @@ export const Hero = () => {
 					custom={headline.length + 1}
 					initial={{ opacity: 0, y: 30 }}
 					animate={textControls}
-					className="mx-auto mt-6 max-w-xl text-base uppercase tracking-[0.4em] text-slate-300 dark:text-slate-600"
+					className="mx-auto mt-6 max-w-xl text-base font-[550] uppercase tracking-[0.4em] text-slate-300 dark:text-slate-600"
 					style={{ fontFamily: "'Inter', sans-serif" }}
 				>
 					{site.role}
