@@ -100,7 +100,8 @@ const WovenCanvas = () => {
 	const mountRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		if (!mountRef.current) return;
+		const mount = mountRef.current;
+		if (!mount) return;
 
 		const scene = new THREE.Scene();
 		const camera = new THREE.PerspectiveCamera(
@@ -116,7 +117,7 @@ const WovenCanvas = () => {
 		});
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.setPixelRatio(window.devicePixelRatio);
-		mountRef.current.appendChild(renderer.domElement);
+		mount.appendChild(renderer.domElement);
 
 		const mouse = new THREE.Vector2(0, 0);
 		const clock = new THREE.Clock();
@@ -149,7 +150,6 @@ const WovenCanvas = () => {
 			originalPositions[i * 3 + 2] = z;
 
 			const color = new THREE.Color();
-			// color.setHSL(Math.random(), 0.8, isDarkMode ? 0.5 : 0.7);
 			color.setHSL(0.63 + Math.random() * 0.1, 0.9, 0.6);
 
 			colors[i * 3] = color.r;
@@ -186,8 +186,9 @@ const WovenCanvas = () => {
 		};
 		window.addEventListener('mousemove', handleMouseMove);
 
+		let animationId = 0;
 		const animate = () => {
-			requestAnimationFrame(animate);
+			animationId = requestAnimationFrame(animate);
 			const elapsedTime = clock.getElapsedTime();
 
 			const mouseWorld = new THREE.Vector3(mouse.x * 3, mouse.y * 3, 0);
@@ -254,9 +255,16 @@ const WovenCanvas = () => {
 		window.addEventListener('resize', handleResize);
 
 		return () => {
+			cancelAnimationFrame(animationId);
 			window.removeEventListener('resize', handleResize);
 			window.removeEventListener('mousemove', handleMouseMove);
-			mountRef.current?.removeChild(renderer.domElement);
+			if (renderer.domElement.parentNode === mount) {
+				mount.removeChild(renderer.domElement);
+			}
+			geometry.dispose();
+			torusKnot.dispose();
+			material.dispose();
+			renderer.dispose();
 		};
 	}, []);
 
