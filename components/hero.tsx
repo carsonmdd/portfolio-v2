@@ -191,7 +191,14 @@ const WovenCanvas = () => {
 			animationId = requestAnimationFrame(animate);
 			const elapsedTime = clock.getElapsedTime();
 
-			const mouseWorld = new THREE.Vector3(mouse.x * 3, mouse.y * 3, 0);
+			const mouseWorld = new THREE.Vector3(
+				mouse.x * 3,
+				mouse.y * 3,
+				0,
+			).applyAxisAngle(
+				new THREE.Vector3(0, 1, 0),
+				-points.rotation.y,
+			);
 
 			for (let i = 0; i < particleCount; i++) {
 				const ix = i * 3;
