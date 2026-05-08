@@ -170,9 +170,11 @@ const WovenCanvas = () => {
 		const points = new THREE.Points(geometry, material);
 		scene.add(points);
 
+		let mouseActive = false;
 		const handleMouseMove = (event: MouseEvent) => {
 			mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
 			mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+			mouseActive = true;
 		};
 		window.addEventListener('mousemove', handleMouseMove);
 
@@ -181,11 +183,13 @@ const WovenCanvas = () => {
 			animationId = requestAnimationFrame(animate);
 			const elapsedTime = clock.getElapsedTime();
 
-			const mouseWorld = new THREE.Vector3(
-				mouse.x * 3,
-				mouse.y * 3,
-				0,
-			).applyAxisAngle(new THREE.Vector3(0, 1, 0), -points.rotation.y);
+			const mouseWorld = mouseActive
+				? new THREE.Vector3(
+						mouse.x * 3,
+						mouse.y * 3,
+						0,
+					).applyAxisAngle(new THREE.Vector3(0, 1, 0), -points.rotation.y)
+				: null;
 
 			for (let i = 0; i < particleCount; i++) {
 				const ix = i * 3;
@@ -208,13 +212,15 @@ const WovenCanvas = () => {
 					velocities[iz],
 				);
 
-				const dist = currentPos.distanceTo(mouseWorld);
-				if (dist < 1.5) {
-					const force = (1.5 - dist) * 0.01;
-					const direction = new THREE.Vector3()
-						.subVectors(currentPos, mouseWorld)
-						.normalize();
-					velocity.add(direction.multiplyScalar(force));
+				if (mouseWorld) {
+					const dist = currentPos.distanceTo(mouseWorld);
+					if (dist < 1.5) {
+						const force = (1.5 - dist) * 0.01;
+						const direction = new THREE.Vector3()
+							.subVectors(currentPos, mouseWorld)
+							.normalize();
+						velocity.add(direction.multiplyScalar(force));
+					}
 				}
 
 				// Return to original position
