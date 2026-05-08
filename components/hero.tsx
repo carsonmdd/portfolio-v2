@@ -35,7 +35,7 @@ export const Hero = () => {
 				<h1
 					className="text-6xl text-white md:text-8xl dark:text-slate-900"
 					style={{
-						fontFamily: "'Playfair Display', serif",
+						fontFamily: "'Inter', serif",
 						textShadow: '0 0 50px rgba(255, 255, 255, 0.3)',
 					}}
 				>
