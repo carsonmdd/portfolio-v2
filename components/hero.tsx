@@ -177,12 +177,18 @@ const WovenCanvas = () => {
 			animationId = requestAnimationFrame(animate);
 			const elapsedTime = clock.getElapsedTime();
 
-			const mouseWorld = mouseActive
-				? new THREE.Vector3(mouse.x * 3, mouse.y * 3, 0).applyAxisAngle(
-						new THREE.Vector3(0, 1, 0),
-						-points.rotation.y,
-					)
-				: null;
+			let mouseWorld: THREE.Vector3 | null = null;
+			if (mouseActive) {
+				const halfH =
+					Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) *
+					camera.position.z;
+				const halfW = halfH * camera.aspect;
+				mouseWorld = new THREE.Vector3(
+					mouse.x * halfW,
+					mouse.y * halfH,
+					0,
+				).applyAxisAngle(new THREE.Vector3(0, 1, 0), -points.rotation.y);
+			}
 
 			for (let i = 0; i < particleCount; i++) {
 				const ix = i * 3;
