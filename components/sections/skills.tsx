@@ -7,10 +7,10 @@ export function Skills() {
 			<ul className="flex flex-wrap gap-3">
 				{skills.map((skill) => (
 					<li
-						key={skill}
+						key={skill.name}
 						className="rounded-full border border-white/20 px-6 py-2.5 text-base font-light text-white/80 dark:border-slate-300/60 dark:text-slate-700"
 					>
-						{skill}
+						{skill.name}
 					</li>
 				))}
 			</ul>

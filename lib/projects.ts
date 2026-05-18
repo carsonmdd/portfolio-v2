@@ -10,7 +10,15 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
-		thumbnail: '/images/midi-air-thumbnail.svg',
+		thumbnail: '/images/newgame-thumbnail.png',
+		alt: 'Screenshot of NewGame catalog page',
+		name: 'NewGame',
+		description:
+			'Management dashboard for a curated library of educational game development resources',
+		repoLink: 'https://github.com/carsonmdd/NewGame',
+	},
+	{
+		thumbnail: '/images/midi-air-thumbnail.png',
 		alt: 'Screenshot of Midi-Air home page',
 		name: 'Midi-Air',
 		description:
@@ -19,7 +27,7 @@ export const projects: Project[] = [
 		devpostLink: 'https://devpost.com/software/midi-air',
 	},
 	{
-		thumbnail: '/images/evalai-thumbnail.svg',
+		thumbnail: '/images/evalai-thumbnail.png',
 		alt: 'Screenshot of EvalAI chat page',
 		name: 'EvalAI',
 		description:
@@ -28,7 +36,7 @@ export const projects: Project[] = [
 		demoLink: 'https://evalai-gamma.vercel.app',
 	},
 	{
-		thumbnail: '/images/dionysus-thumbnail.svg',
+		thumbnail: '/images/dionysus-thumbnail.png',
 		alt: 'Screenshot of Dionysus dashboard',
 		name: 'Dionysus',
 		description:
@@ -37,7 +45,7 @@ export const projects: Project[] = [
 		demoLink: 'https://dionysus-kappa.vercel.app',
 	},
 	{
-		thumbnail: '/images/shelterfy-thumbnail.svg',
+		thumbnail: '/images/shelterfy-thumbnail.png',
 		alt: 'Screenshot of Shelterfy Find Shelter page',
 		name: 'Shelterfy',
 		description:
@@ -46,7 +54,7 @@ export const projects: Project[] = [
 		devpostLink: 'https://devpost.com/software/shelterfy',
 	},
 	{
-		thumbnail: '/images/aora-thumbnail.svg',
+		thumbnail: '/images/aora-thumbnail.png',
 		alt: 'Screenshot of Aora home page',
 		name: 'Aora',
 		description:
@@ -54,7 +62,7 @@ export const projects: Project[] = [
 		repoLink: 'https://github.com/carsonmdd/aora',
 	},
 	{
-		thumbnail: '/images/instalog-thumbnail.svg',
+		thumbnail: '/images/InstaLog-thumbnail.png',
 		alt: 'Screenshot of InstaLog interface',
 		name: 'InstaLog',
 		description:
