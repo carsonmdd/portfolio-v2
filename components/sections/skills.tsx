@@ -1,19 +1,22 @@
+import Image from 'next/image';
+import { Marquee } from '@/components/marquee';
 import { skills } from '@/lib/skills';
-import { Section } from './section';
 
 export function Skills() {
 	return (
-		<Section number="01" label="Skills" id="skills">
-			<ul className="flex flex-wrap gap-3">
+		<div className="px-6 py-4 md:pl-56 md:pr-12 lg:pl-64 lg:pr-20">
+			<Marquee duration={32} direction="right">
 				{skills.map((skill) => (
-					<li
+					<Image
 						key={skill.name}
-						className="rounded-full border border-white/20 px-6 py-2.5 text-base font-light text-white/80 dark:border-slate-300/60 dark:text-slate-700"
-					>
-						{skill.name}
-					</li>
+						src={skill.image}
+						alt={skill.name}
+						width={60}
+						height={60}
+						className="mx-8 object-contain"
+					/>
 				))}
-			</ul>
-		</Section>
+			</Marquee>
+		</div>
 	);
 }

@@ -1,5 +1,6 @@
 import { Education } from '@/components/sections/education';
 import { Experience } from '@/components/sections/experience';
+import { Skills } from '@/components/sections/skills';
 import { Section } from '@/components/sections/section';
 import { site } from '@/lib/site';
 
@@ -18,6 +19,7 @@ const About = () => {
 					</p>
 				</div>
 			</Section>
+			<Skills />
 			<Experience />
 			<Education />
 		</>
