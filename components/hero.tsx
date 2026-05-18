@@ -156,7 +156,7 @@ const WovenCanvas = () => {
 		const material = new THREE.PointsMaterial({
 			size: 0.02,
 			vertexColors: true,
-			blending: THREE.AdditiveBlending,
+			blending: THREE.NormalBlending,
 			transparent: true,
 			opacity: 0.8,
 		});
@@ -178,11 +178,10 @@ const WovenCanvas = () => {
 			const elapsedTime = clock.getElapsedTime();
 
 			const mouseWorld = mouseActive
-				? new THREE.Vector3(
-						mouse.x * 3,
-						mouse.y * 3,
-						0,
-					).applyAxisAngle(new THREE.Vector3(0, 1, 0), -points.rotation.y)
+				? new THREE.Vector3(mouse.x * 3, mouse.y * 3, 0).applyAxisAngle(
+						new THREE.Vector3(0, 1, 0),
+						-points.rotation.y,
+					)
 				: null;
 
 			for (let i = 0; i < particleCount; i++) {
