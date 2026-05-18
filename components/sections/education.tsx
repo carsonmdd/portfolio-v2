@@ -13,7 +13,7 @@ export function Education() {
 					>
 						<div className="flex items-start gap-6 md:col-span-4">
 							{entry.logo && (
-								<div className="mt-1 h-14 w-14 shrink-0 overflow-hidden rounded-full bg-white/10 p-1.5">
+								<div className="mt-1 h-12 w-12 overflow-hidden rounded-full">
 									<Image
 										src={entry.logo}
 										alt=""
