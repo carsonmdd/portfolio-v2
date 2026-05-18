@@ -8,7 +8,6 @@ export const skills: Skill[] = [
 	{ image: '/images/mongodb.png', name: 'MongoDB' },
 	{ image: '/images/express.png', name: 'Express.js' },
 	{ image: '/images/node.png', name: 'Node.js' },
-	{ image: '/images/flask.png', name: 'Flask' },
 	{ image: '/images/postgresql.png', name: 'PostgreSQL' },
 	{ image: '/images/nextjs.png', name: 'Next.js' },
 	{ image: '/images/trpc.png', name: 'tRPC' },

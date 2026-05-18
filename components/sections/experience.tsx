@@ -15,7 +15,7 @@ const BEAD_GLOW =
 function Meta({ exp }: { exp: Experience }) {
 	return (
 		<>
-			<p className="text-sm uppercase tracking-[0.3em] text-white/50 dark:text-slate-500">
+			<p className="text-sm uppercase tracking-[0.3em] text-white/50">
 				{exp.dates}
 			</p>
 			<h3 className="mt-3 text-2xl font-light tracking-tight">
@@ -23,7 +23,7 @@ function Meta({ exp }: { exp: Experience }) {
 			</h3>
 			<p className="mt-1 text-base text-accent">{exp.company}</p>
 			{exp.type && (
-				<p className="mt-1 text-xs uppercase tracking-[0.2em] text-white/50 dark:text-slate-500">
+				<p className="mt-1 text-xs uppercase tracking-[0.2em] text-white/50">
 					{exp.type}
 				</p>
 			)}
@@ -44,7 +44,7 @@ function Meta({ exp }: { exp: Experience }) {
 
 function Desc({ exp }: { exp: Experience }) {
 	return (
-		<p className="text-xl font-light leading-relaxed text-white/75 dark:text-slate-600">
+		<p className="text-xl font-light leading-relaxed text-white/75">
 			{exp.description}
 		</p>
 	);
@@ -90,16 +90,16 @@ export function Experience() {
 				{experience.map((exp) => (
 					<li
 						key={exp.role}
-						className="border-l border-white/20 pl-6 dark:border-slate-900/20"
+						className="border-l border-white/20 pl-6"
 					>
-						<p className="text-xs uppercase tracking-[0.3em] text-white/50 dark:text-slate-500">
+						<p className="text-xs uppercase tracking-[0.3em] text-white/50">
 							{exp.dates}
 						</p>
 						<h3 className="mt-2 text-xl font-light">{exp.role}</h3>
 						<p className="mt-1 text-sm text-accent">
 							{exp.company}
 						</p>
-						<p className="mt-3 text-base font-light leading-relaxed text-white/75 dark:text-slate-600">
+						<p className="mt-3 text-base font-light leading-relaxed text-white/75">
 							{exp.description}
 						</p>
 					</li>
@@ -109,7 +109,7 @@ export function Experience() {
 			{/* Desktop: center timeline */}
 			<div ref={timelineRef} className="relative hidden md:block">
 				{/* Dim track */}
-				<div className="absolute -inset-y-8 left-1/2 w-px -translate-x-1/2 bg-white/10 dark:bg-slate-900/10" />
+				<div className="absolute -inset-y-8 left-1/2 w-px -translate-x-1/2 bg-white/10" />
 				{/* Glowing fill */}
 				<div
 					ref={fillRef}

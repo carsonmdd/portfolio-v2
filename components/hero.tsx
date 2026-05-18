@@ -29,11 +29,11 @@ export const Hero = () => {
 	const headline = site.name;
 
 	return (
-		<section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black dark:bg-white">
+		<section className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden bg-black">
 			<WovenCanvas />
 			<div className="relative z-10 px-4 text-center">
 				<h1
-					className="text-6xl text-white md:text-8xl dark:text-slate-900"
+					className="text-6xl text-white md:text-8xl"
 					style={{
 						fontFamily: "'Inter', serif",
 						textShadow: '0 0 50px rgba(255, 255, 255, 0.3)',
@@ -62,7 +62,7 @@ export const Hero = () => {
 					custom={headline.length + 1}
 					initial={{ opacity: 0, y: 30 }}
 					animate={textControls}
-					className="mx-auto mt-6 max-w-xl text-base font-[550] uppercase tracking-[0.4em] text-slate-300 dark:text-slate-600"
+					className="mx-auto mt-6 max-w-xl text-base font-[550] uppercase tracking-[0.4em] text-slate-300"
 					style={{ fontFamily: "'Inter', sans-serif" }}
 				>
 					{site.role}
@@ -74,7 +74,7 @@ export const Hero = () => {
 				>
 					<Link
 						href="/works"
-						className="rounded-full border-2 border-white/20 bg-white/10 px-8 py-3 font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20 dark:border-slate-800/20 dark:bg-slate-800/5 dark:text-slate-800 dark:hover:bg-slate-800/10"
+						className="rounded-full border-2 border-white/20 bg-white/10 px-8 py-3 font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
 						style={{ fontFamily: "'Inter', sans-serif" }}
 					>
 						View Work
@@ -111,10 +111,6 @@ const WovenCanvas = () => {
 
 		const mouse = new THREE.Vector2(0, 0);
 		const clock = new THREE.Clock();
-
-		const isDarkMode =
-			window.matchMedia &&
-			window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 		// --- Woven Silk ---
 		const particleCount = 50000;
@@ -160,11 +156,9 @@ const WovenCanvas = () => {
 		const material = new THREE.PointsMaterial({
 			size: 0.02,
 			vertexColors: true,
-			blending: isDarkMode
-				? THREE.NormalBlending
-				: THREE.AdditiveBlending,
+			blending: THREE.AdditiveBlending,
 			transparent: true,
-			opacity: isDarkMode ? 1.0 : 0.8,
+			opacity: 0.8,
 		});
 
 		const points = new THREE.Points(geometry, material);

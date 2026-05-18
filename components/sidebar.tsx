@@ -28,8 +28,8 @@ export function Sidebar() {
 										href={href}
 										className={`relative inline-block pb-1 text-xl uppercase tracking-[0.25em] transition-colors after:absolute after:left-0 after:-right-4 after:bottom-0 after:h-px after:origin-left after:bg-current after:transition-transform after:duration-400 ${
 											active
-												? 'text-white after:scale-x-100 dark:text-slate-900'
-												: 'text-white/40 after:scale-x-0 hover:text-white hover:after:scale-x-100 dark:text-slate-500 dark:hover:text-slate-900'
+												? 'text-white after:scale-x-100'
+												: 'text-white/40 after:scale-x-0 hover:text-white hover:after:scale-x-100'
 										}`}
 									>
 										{label}
@@ -40,11 +40,11 @@ export function Sidebar() {
 					</ul>
 				</nav>
 
-				<div className="flex flex-col gap-5 text-white/50 dark:text-slate-500">
+				<div className="flex flex-col gap-5 text-white/50">
 					<a
 						href={site.socials.linkedin}
 						aria-label="LinkedIn"
-						className="transition-colors hover:text-white dark:hover:text-slate-900"
+						className="transition-colors hover:text-white"
 						target="_blank"
 						rel="noreferrer"
 					>
@@ -53,7 +53,7 @@ export function Sidebar() {
 					<a
 						href={`mailto:${site.socials.email}`}
 						aria-label="Email"
-						className="transition-colors hover:text-white dark:hover:text-slate-900"
+						className="transition-colors hover:text-white"
 						target="_blank"
 						rel="noreferrer"
 					>
@@ -62,7 +62,7 @@ export function Sidebar() {
 					<a
 						href={site.socials.github}
 						aria-label="GitHub"
-						className="transition-colors hover:text-white dark:hover:text-slate-900"
+						className="transition-colors hover:text-white"
 						target="_blank"
 						rel="noreferrer"
 					>

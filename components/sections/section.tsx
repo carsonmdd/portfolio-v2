@@ -13,11 +13,11 @@ export function Section({ number, label, children, id }: SectionProps) {
 			id={id}
 			className="px-6 py-24 md:pl-56 md:pr-12 lg:pl-64 lg:pr-20"
 		>
-			<header className="mb-16 flex items-baseline gap-6 border-b border-white/10 pb-4 dark:border-slate-900/10">
-				<span className="text-sm tracking-[0.3em] text-white/40 dark:text-slate-500">
+			<header className="mb-16 flex items-baseline gap-6 border-b border-white/10 pb-4">
+				<span className="text-sm tracking-[0.3em] text-white/40">
 					{number}
 				</span>
-				<h2 className="text-lg font-light uppercase tracking-[0.35em] text-white/80 dark:text-slate-700">
+				<h2 className="text-lg font-light uppercase tracking-[0.35em] text-white/80">
 					{label}
 				</h2>
 			</header>
