@@ -16,7 +16,7 @@ export const Hero = () => {
 			opacity: 1,
 			y: 0,
 			transition: {
-				delay: i * 0.07 + 1.2,
+				delay: i * 0.07 + 1,
 				duration: 1.2,
 				ease: [0.2, 0.65, 0.3, 0.9],
 			},
