@@ -34,7 +34,7 @@ export const Hero = () => {
 			<WovenCanvas />
 			<div className="relative z-10 px-4 text-center">
 				<h1
-					className="text-6xl text-white md:text-8xl"
+					className="text-6xl text-white md:text-8xl font-mono"
 					style={{
 						textShadow: '0 0 50px rgba(255, 255, 255, 0.3)',
 					}}
