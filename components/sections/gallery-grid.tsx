@@ -3,15 +3,14 @@
 import Image from 'next/image';
 import MasonryGrid from '@/components/masonry-grid';
 
-type Photo = { src: string; alt: string };
+type Photo = { src: string; alt: string; aspectRatio: number };
 
 export function GalleryGrid({ photos }: { photos: Photo[] }) {
 	return (
 		<MasonryGrid
 			items={photos}
-			className="columns-1 sm:columns-2 lg:columns-3"
-			gap="1.5rem"
-			staggerDelay={0.07}
+			columns={3}
+			gap={24}
 			renderItem={(photo) => (
 				<figure className="overflow-hidden rounded-sm">
 					<Image

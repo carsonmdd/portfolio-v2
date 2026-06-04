@@ -1,20 +1,43 @@
 import fs from 'fs';
 import path from 'path';
+import sharp from 'sharp';
 import { Section } from '@/components/sections/section';
 import { GalleryGrid } from '@/components/sections/gallery-grid';
 
 const PICTURES_DIR = path.join(process.cwd(), 'public/images/pictures');
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif']);
 
-function getPictures() {
-	return fs
+async function getPictures() {
+	const files = fs
 		.readdirSync(PICTURES_DIR)
-		.filter((file) => IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()))
-		.map((file) => ({ src: `/images/pictures/${file}`, alt: '' }));
+		.filter((file) =>
+			IMAGE_EXTENSIONS.has(path.extname(file).toLowerCase()),
+		);
+
+	return Promise.all(
+		files.map(async (file) => {
+			const filePath = path.join(PICTURES_DIR, file);
+			const {
+				width = 1,
+				height = 1,
+				orientation = 1,
+			} = await sharp(filePath).metadata();
+
+			const swapped = orientation >= 5;
+			const displayWidth = swapped ? height : width;
+			const displayHeight = swapped ? width : height;
+
+			return {
+				src: `/images/pictures/${file}`,
+				alt: '',
+				aspectRatio: displayHeight / displayWidth,
+			};
+		}),
+	);
 }
 
-export default function GalleryPage() {
-	const photos = getPictures();
+export default async function GalleryPage() {
+	const photos = await getPictures();
 
 	return (
 		<Section number="01" label="Gallery" id="gallery">

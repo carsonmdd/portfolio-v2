@@ -8,14 +8,30 @@ import {
 	useTransform,
 	useSpring,
 } from 'framer-motion';
-import { cn } from '@/lib/utils';
 
-interface MasonryGridProps<T> {
+interface MasonryGridProps<T extends { aspectRatio?: number }> {
 	items: T[];
 	renderItem: (item: T, index: number) => React.ReactNode;
-	className?: string;
-	gap?: string;
+	columns?: number;
+	gap?: number;
 	staggerDelay?: number;
+}
+
+function useResponsiveColumns(max: number): number {
+	const [cols, setCols] = React.useState(1);
+
+	React.useEffect(() => {
+		const update = () => {
+			if (window.innerWidth >= 1024) setCols(max);
+			else if (window.innerWidth >= 640) setCols(Math.min(2, max));
+			else setCols(1);
+		};
+		update();
+		window.addEventListener('resize', update);
+		return () => window.removeEventListener('resize', update);
+	}, [max]);
+
+	return cols;
 }
 
 const GridItem = ({ children }: { children: React.ReactNode }) => {
@@ -32,7 +48,8 @@ const GridItem = ({ children }: { children: React.ReactNode }) => {
 
 	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
 		if (!ref.current) return;
-		const { left, top, width, height } = ref.current.getBoundingClientRect();
+		const { left, top, width, height } =
+			ref.current.getBoundingClientRect();
 		x.set((e.clientX - left) / width - 0.5);
 		y.set((e.clientY - top) / height - 0.5);
 	};
@@ -61,52 +78,67 @@ const GridItem = ({ children }: { children: React.ReactNode }) => {
 	);
 };
 
-const MasonryGrid = <T,>({
+const MasonryGrid = <T extends { aspectRatio?: number }>({
 	items,
 	renderItem,
-	className,
-	gap = '1rem',
-	staggerDelay = 0.05,
+	columns = 3,
+	gap = 24,
+	staggerDelay = 0.08,
 }: MasonryGridProps<T>) => {
 	const containerRef = React.useRef(null);
 	const isInView = useInView(containerRef, { once: true, amount: 0.1 });
+	const numCols = useResponsiveColumns(columns);
 
-	const containerVariants = {
-		hidden: {},
-		visible: { transition: { staggerChildren: staggerDelay } },
-	};
-
-	const itemVariants = {
-		hidden: { opacity: 0, y: 30, scale: 0.97 },
-		visible: {
-			opacity: 1,
-			y: 0,
-			scale: 1,
-			transition: { duration: 0.6, ease: 'easeOut' },
-		},
-	};
+	// Distribute items into shortest column first
+	const cols: { item: T; originalIndex: number }[][] = Array.from(
+		{ length: numCols },
+		() => [],
+	);
+	const colHeights = new Array(numCols).fill(0);
+	items.forEach((item, i) => {
+		const shortest = colHeights.indexOf(Math.min(...colHeights));
+		cols[shortest].push({ item, originalIndex: i });
+		colHeights[shortest] += item.aspectRatio ?? 1;
+	});
 
 	return (
-		<motion.div
-			ref={containerRef}
-			className={cn('w-full', className)}
-			style={{ columnGap: gap }}
-			initial="hidden"
-			animate={isInView ? 'visible' : 'hidden'}
-			variants={containerVariants}
-			role="list"
-		>
-			{items.map((item, index) => (
-				<motion.div
-					key={index}
-					className="mb-4 break-inside-avoid"
-					variants={itemVariants}
-					role="listitem"
+		<div ref={containerRef} className="flex w-full" style={{ gap }}>
+			{cols.map((col, colIndex) => (
+				<div
+					key={colIndex}
+					className="flex flex-1 flex-col"
+					style={{ gap }}
 				>
-					<GridItem>{renderItem(item, index)}</GridItem>
-				</motion.div>
+					{col.map(({ item, originalIndex }, rowIndex) => (
+						<motion.div
+							key={originalIndex}
+							initial={{ opacity: 0, y: 72 }}
+							animate={
+								isInView
+									? { opacity: 1, y: 0 }
+									: { opacity: 0, y: 72 }
+							}
+							transition={{
+								y: {
+									duration: 1.6,
+									ease: [0.16, 1, 0.3, 1],
+									delay: (colIndex + rowIndex) * staggerDelay,
+								},
+								opacity: {
+									duration: 0.6,
+									ease: 'linear',
+									delay: (colIndex + rowIndex) * staggerDelay,
+								},
+							}}
+						>
+							<GridItem>
+								{renderItem(item, originalIndex)}
+							</GridItem>
+						</motion.div>
+					))}
+				</div>
 			))}
-		</motion.div>
+		</div>
 	);
 };
 
