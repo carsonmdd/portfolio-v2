@@ -10,7 +10,7 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
-		thumbnail: '/images/newgame-thumbnail.png',
+		thumbnail: '/images/thumbnails/newgame-thumbnail.png',
 		alt: 'Screenshot of NewGame catalog page',
 		name: 'NewGame',
 		description:
@@ -18,7 +18,7 @@ export const projects: Project[] = [
 		repoLink: 'https://github.com/carsonmdd/NewGame',
 	},
 	{
-		thumbnail: '/images/midi-air-thumbnail.png',
+		thumbnail: '/images/thumbnails/midi-air-thumbnail.png',
 		alt: 'Screenshot of Midi-Air home page',
 		name: 'Midi-Air',
 		description:
@@ -27,7 +27,7 @@ export const projects: Project[] = [
 		devpostLink: 'https://devpost.com/software/midi-air',
 	},
 	{
-		thumbnail: '/images/evalai-thumbnail.png',
+		thumbnail: '/images/thumbnails/evalai-thumbnail.png',
 		alt: 'Screenshot of EvalAI chat page',
 		name: 'EvalAI',
 		description:
@@ -36,7 +36,7 @@ export const projects: Project[] = [
 		demoLink: 'https://evalai-gamma.vercel.app',
 	},
 	{
-		thumbnail: '/images/dionysus-thumbnail.png',
+		thumbnail: '/images/thumbnails/dionysus-thumbnail.png',
 		alt: 'Screenshot of Dionysus dashboard',
 		name: 'Dionysus',
 		description:
@@ -45,7 +45,7 @@ export const projects: Project[] = [
 		demoLink: 'https://dionysus-kappa.vercel.app',
 	},
 	{
-		thumbnail: '/images/shelterfy-thumbnail.png',
+		thumbnail: '/images/thumbnails/shelterfy-thumbnail.png',
 		alt: 'Screenshot of Shelterfy Find Shelter page',
 		name: 'Shelterfy',
 		description:
@@ -54,7 +54,7 @@ export const projects: Project[] = [
 		devpostLink: 'https://devpost.com/software/shelterfy',
 	},
 	{
-		thumbnail: '/images/aora-thumbnail.png',
+		thumbnail: '/images/thumbnails/aora-thumbnail.png',
 		alt: 'Screenshot of Aora home page',
 		name: 'Aora',
 		description:
@@ -62,7 +62,7 @@ export const projects: Project[] = [
 		repoLink: 'https://github.com/carsonmdd/aora',
 	},
 	{
-		thumbnail: '/images/InstaLog-thumbnail.png',
+		thumbnail: '/images/thumbnails/InstaLog-thumbnail.png',
 		alt: 'Screenshot of InstaLog interface',
 		name: 'InstaLog',
 		description:

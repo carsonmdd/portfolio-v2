@@ -17,7 +17,7 @@ export const experience: Experience[] = [
 		location: 'Irvine, California',
 		description:
 			'Collaborating with a cross-functional team to build a full-stack web application for nonprofit partners, contributing to front-end and back-end development while supporting agile, team-driven workflows.',
-		logo: '/images/ctc.svg',
+		logo: '/images/icons/ctc.svg',
 	},
 	{
 		role: 'Web Developer',
@@ -26,7 +26,7 @@ export const experience: Experience[] = [
 		dates: 'Aug 2025 — Present',
 		description:
 			'Building a large-scale community platform with Next.js and TypeScript, delivering responsive, accessible, and high-performance web experiences for thousands of users.',
-		logo: '/images/uvsa.png',
+		logo: '/images/icons/uvsa.png',
 	},
 	{
 		role: 'Learning Assistant',
@@ -37,6 +37,6 @@ export const experience: Experience[] = [
 		location: 'Irvine, California',
 		description:
 			'Supported 300+ students in Python by facilitating active learning labs and collaborating on curriculum improvements.',
-		logo: '/images/uci.png',
+		logo: '/images/icons/uci.png',
 	},
 ];

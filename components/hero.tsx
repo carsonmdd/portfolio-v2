@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+const MotionLink = motion(Link);
 import { useRef, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import * as THREE from 'three';
@@ -35,7 +36,6 @@ export const Hero = () => {
 				<h1
 					className="text-6xl text-white md:text-8xl"
 					style={{
-						fontFamily: "'Inter', serif",
 						textShadow: '0 0 50px rgba(255, 255, 255, 0.3)',
 					}}
 				>
@@ -63,23 +63,20 @@ export const Hero = () => {
 					initial={{ opacity: 0, y: 30 }}
 					animate={textControls}
 					className="mx-auto mt-6 max-w-xl text-base font-[550] uppercase tracking-[0.4em] text-slate-300"
-					style={{ fontFamily: "'Inter', sans-serif" }}
 				>
 					{site.role}
 				</motion.p>
-				<motion.div
-					initial={{ opacity: 0 }}
-					animate={buttonControls}
-					className="mt-10"
-				>
-					<Link
+				<div className="mt-10">
+					<MotionLink
 						href="/works"
+						initial={{ opacity: 0 }}
+						animate={buttonControls}
 						className="rounded-full border-2 border-white/20 bg-white/10 px-8 py-3 font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
-						style={{ fontFamily: "'Inter', sans-serif" }}
+						style={{ display: 'inline-block' }}
 					>
 						View Work
-					</Link>
-				</motion.div>
+					</MotionLink>
+				</div>
 			</div>
 		</section>
 	);
@@ -189,7 +186,10 @@ const WovenCanvas = () => {
 					mouse.x * halfW,
 					mouse.y * halfH,
 					0,
-				).applyAxisAngle(new THREE.Vector3(0, 1, 0), -points.rotation.y);
+				).applyAxisAngle(
+					new THREE.Vector3(0, 1, 0),
+					-points.rotation.y,
+				);
 			}
 
 			for (let i = 0; i < particleCount; i++) {

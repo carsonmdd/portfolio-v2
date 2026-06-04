@@ -12,6 +12,6 @@ export const education: Education[] = [
 		degree: "Bachelor's degree, Software Engineering",
 		honors: 'Campuswide Honors Collegium',
 		dates: 'Sep 2022 – Jun 2026',
-		logo: '/images/uci.png',
+		logo: '/images/icons/uci.png',
 	},
 ];
