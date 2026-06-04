@@ -5,7 +5,7 @@ import { skills } from '@/lib/skills';
 export function Skills() {
 	return (
 		<div className="px-6 py-4 md:pl-56 md:pr-12 lg:pl-64 lg:pr-20">
-			<Marquee duration={32} direction="right">
+			<Marquee duration={30} direction="right">
 				{skills.map((skill) => (
 					<Image
 						key={skill.name}
@@ -13,7 +13,7 @@ export function Skills() {
 						alt={skill.name}
 						width={60}
 						height={60}
-						className="mx-8 object-contain"
+						className="mx-6 object-contain"
 					/>
 				))}
 			</Marquee>
