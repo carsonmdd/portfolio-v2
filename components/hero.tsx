@@ -158,7 +158,7 @@ const WovenCanvas = () => {
 			vertexColors: true,
 			blending: THREE.NormalBlending,
 			transparent: true,
-			opacity: 0.8,
+			opacity: 0,
 		});
 
 		const points = new THREE.Points(geometry, material);
@@ -176,6 +176,8 @@ const WovenCanvas = () => {
 		const animate = () => {
 			animationId = requestAnimationFrame(animate);
 			const elapsedTime = clock.getElapsedTime();
+
+			material.opacity = Math.min(elapsedTime / 1.5, 1) * 0.8;
 
 			let mouseWorld: THREE.Vector3 | null = null;
 			if (mouseActive) {
