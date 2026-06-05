@@ -1,11 +1,11 @@
 'use client';
 
-import * as React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { site } from '@/lib/site';
 import { AiOutlineMail, AiOutlineGithub, AiFillLinkedin } from 'react-icons/ai';
+import { useEffect, useState } from 'react';
 
 const navLinks = [
 	{ label: 'Home', href: '/' },
@@ -16,13 +16,13 @@ const navLinks = [
 
 export function Sidebar() {
 	const pathname = usePathname();
-	const [open, setOpen] = React.useState(false);
+	const [open, setOpen] = useState(false);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		setOpen(false);
 	}, [pathname]);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		document.body.style.overflow = open ? 'hidden' : '';
 		return () => {
 			document.body.style.overflow = '';
@@ -89,8 +89,8 @@ export function Sidebar() {
 			</aside>
 
 			{/* Mobile top bar */}
-			<header className="fixed left-0 right-0 top-0 z-[60] flex items-center justify-between px-6 py-5 md:hidden">
-				<span className="text-xs tracking-[0.3em] text-white/40 uppercase">
+			<header className="fixed left-0 right-0 top-0 z-60 flex items-center justify-between px-6 pt-5 pb-10 backdrop-blur-sm mask-[linear-gradient(to_bottom,black_50%,transparent)] md:hidden">
+				<span className="text-sm tracking-[0.3em] text-white/40 uppercase">
 					CD
 				</span>
 				<button
@@ -100,17 +100,25 @@ export function Sidebar() {
 				>
 					<motion.span
 						className="block h-px w-6 bg-white origin-center"
-						animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+						animate={
+							open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }
+						}
 						transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
 					/>
 					<motion.span
 						className="block h-px w-6 bg-white"
-						animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+						animate={
+							open
+								? { opacity: 0, scaleX: 0 }
+								: { opacity: 1, scaleX: 1 }
+						}
 						transition={{ duration: 0.2 }}
 					/>
 					<motion.span
 						className="block h-px w-6 bg-white origin-center"
-						animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+						animate={
+							open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }
+						}
 						transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
 					/>
 				</button>
@@ -136,7 +144,10 @@ export function Sidebar() {
 							initial={{ x: '100%' }}
 							animate={{ x: 0 }}
 							exit={{ x: '100%' }}
-							transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+							transition={{
+								duration: 0.4,
+								ease: [0.16, 1, 0.3, 1],
+							}}
 						>
 							<nav>
 								<ul className="space-y-6">
