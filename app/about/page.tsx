@@ -17,8 +17,9 @@ const About = () => {
 								alt="Carson Davis"
 								fill
 								priority
+								quality={100}
 								className="object-cover"
-								sizes="(max-width: 768px) 16rem, 20rem"
+								sizes="(max-width: 768px) 16rem, 40rem"
 							/>
 						</div>
 					</div>
