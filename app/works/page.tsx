@@ -70,12 +70,16 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 						<motion.span
 							key={i}
 							className="inline-block"
+							style={{ willChange: 'transform' }}
 							variants={{
 								hidden: { opacity: 0, y: 14 },
 								visible: {
 									opacity: 1,
 									y: 0,
-									transition: { duration: 0.8, ease: EASE },
+									transition: {
+										duration: 0.8,
+										ease: [0.16, 1, 0.3, 1],
+									},
 								},
 							}}
 						>
