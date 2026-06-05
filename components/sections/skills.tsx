@@ -14,7 +14,7 @@ export function Skills() {
 						width={60}
 						height={60}
 						priority={i === 0}
-						className="mx-6 object-contain w-auto h-auto"
+						className="mx-6 h-[60px] w-auto object-contain"
 					/>
 				))}
 			</Marquee>
