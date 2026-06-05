@@ -41,8 +41,7 @@ export default async function GalleryPage() {
 
 	return (
 		<Section number="01" label="Gallery" id="gallery">
-			<div className="mb-12 flex items-center justify-between text-sm uppercase tracking-[0.3em] text-white/40">
-				<span>Photography</span>
+			<div className="mb-12 flex items-center justify-end text-sm uppercase tracking-[0.3em] text-white/40">
 				<span>Personal Archive</span>
 			</div>
 			<GalleryGrid photos={photos} />
