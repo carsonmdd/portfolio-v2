@@ -8,9 +8,9 @@ import { Section } from './section';
 
 const EASE = [0.2, 0.65, 0.3, 0.9] as const;
 const ACCENT_GLOW =
-	'0 0 6px 1px rgba(129,140,248,0.4), 0 0 14px 3px rgba(129,140,248,0.1)';
+	'0 0 6px 1px rgba(129,140,248,0.2), 0 0 14px 3px rgba(129,140,248,0.05)';
 const BEAD_GLOW =
-	'0 0 6px 2px rgba(129,140,248,0.5), 0 0 14px 4px rgba(129,140,248,0.2)';
+	'0 0 6px 2px rgba(129,140,248,0.25), 0 0 14px 4px rgba(129,140,248,0.1)';
 
 function Meta({ exp }: { exp: Experience }) {
 	return (
@@ -138,7 +138,7 @@ export function Experience() {
 								<motion.div
 									initial={{ opacity: 0, x: -40 }}
 									whileInView={{ opacity: 1, x: 0 }}
-									viewport={{ once: true, margin: '-200px' }}
+									viewport={{ once: true, margin: '-100px' }}
 									transition={{
 										duration: 1.6,
 										ease: EASE,
@@ -156,7 +156,7 @@ export function Experience() {
 								<motion.div
 									initial={{ opacity: 0, x: 40 }}
 									whileInView={{ opacity: 1, x: 0 }}
-									viewport={{ once: true, margin: '-200px' }}
+									viewport={{ once: true, margin: '-100px' }}
 									transition={{
 										duration: 1.6,
 										ease: EASE,

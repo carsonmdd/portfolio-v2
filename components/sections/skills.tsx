@@ -4,7 +4,7 @@ import { skills } from '@/lib/skills';
 
 export function Skills() {
 	return (
-		<div className="px-6 py-4 md:pl-56 md:pr-12 lg:pl-64 lg:pr-20">
+		<div className="px-6 md:pl-56 md:pr-12 lg:pl-64 lg:pr-20">
 			<Marquee duration={30} direction="right">
 				{skills.map((skill) => (
 					<Image
