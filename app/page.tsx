@@ -107,7 +107,8 @@ const WovenCanvas = () => {
 		mount.appendChild(renderer.domElement);
 
 		const mouse = new THREE.Vector2(0, 0);
-		const clock = new THREE.Clock();
+		const timer = new THREE.Timer();
+		timer.connect(document);
 
 		// --- Woven Silk ---
 		const particleCount = 50000;
@@ -170,9 +171,10 @@ const WovenCanvas = () => {
 		window.addEventListener('mousemove', handleMouseMove);
 
 		let animationId = 0;
-		const animate = () => {
+		const animate = (timestamp?: number) => {
 			animationId = requestAnimationFrame(animate);
-			const elapsedTime = clock.getElapsedTime();
+			timer.update(timestamp);
+			const elapsedTime = timer.getElapsed();
 
 			material.opacity = Math.min(elapsedTime / 1.5, 1) * 0.8;
 
@@ -266,6 +268,7 @@ const WovenCanvas = () => {
 			torusKnot.dispose();
 			material.dispose();
 			renderer.dispose();
+			timer.dispose();
 		};
 	}, []);
 
