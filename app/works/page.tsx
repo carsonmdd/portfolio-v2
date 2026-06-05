@@ -1,35 +1,76 @@
 'use client';
 
+import * as React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { projects, type Project } from '@/lib/projects';
 import { Section } from '@/components/sections/section';
 
 const EASE = [0.2, 0.65, 0.3, 0.9] as const;
 const VIEWPORT = { once: true, margin: '-80px' } as const;
 
+function TiltCard({ children }: { children: React.ReactNode }) {
+	const ref = React.useRef<HTMLDivElement>(null);
+	const x = useMotionValue(0);
+	const y = useMotionValue(0);
+	const mouseXSpring = useSpring(x, { stiffness: 300, damping: 20 });
+	const mouseYSpring = useSpring(y, { stiffness: 300, damping: 20 });
+	const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['4deg', '-4deg']);
+	const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-4deg', '4deg']);
+
+	const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+		if (!ref.current) return;
+		const { left, top, width, height } =
+			ref.current.getBoundingClientRect();
+		x.set((e.clientX - left) / width - 0.5);
+		y.set((e.clientY - top) / height - 0.5);
+	};
+
+	const handleMouseLeave = () => {
+		x.set(0);
+		y.set(0);
+	};
+
+	return (
+		<motion.div
+			ref={ref}
+			onMouseMove={handleMouseMove}
+			onMouseLeave={handleMouseLeave}
+			style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+		>
+			<motion.div
+				style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+			>
+				{children}
+			</motion.div>
+		</motion.div>
+	);
+}
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
 	return (
 		<article className="grid gap-8 md:grid-cols-12 md:gap-12">
 			{/* Thumbnail */}
 			<div className="md:col-span-7">
-				<div className="aspect-16/10 relative overflow-hidden rounded-sm border border-white/10 bg-white/5">
-					<motion.div
-						className="absolute inset-0"
-						initial={{ opacity: 0, scale: 1.04 }}
-						whileInView={{ opacity: 1, scale: 1 }}
-						viewport={VIEWPORT}
-						transition={{ duration: 1, ease: EASE }}
-					>
-						<Image
-							src={project.thumbnail}
-							alt={project.alt}
-							fill
-							className="object-cover"
-							sizes="(max-width: 768px) 100vw, 58vw"
-						/>
-					</motion.div>
-				</div>
+				<TiltCard>
+					<div className="aspect-16/10 relative overflow-hidden rounded-sm border border-white/10 bg-white/5">
+						<motion.div
+							className="absolute inset-0"
+							initial={{ opacity: 0, scale: 1.04 }}
+							whileInView={{ opacity: 1, scale: 1 }}
+							viewport={VIEWPORT}
+							transition={{ duration: 1, ease: EASE }}
+						>
+							<Image
+								src={project.thumbnail}
+								alt={project.alt}
+								fill
+								className="object-cover"
+								sizes="(max-width: 768px) 100vw, 58vw"
+							/>
+						</motion.div>
+					</div>
+				</TiltCard>
 			</div>
 
 			{/* Text column */}
