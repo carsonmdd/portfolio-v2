@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 import { useRef, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import * as THREE from 'three';
