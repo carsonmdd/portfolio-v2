@@ -40,21 +40,21 @@ export default function Home() {
 					}}
 				>
 					{headline.split(' ').map((word, i) => (
-						<span key={i} className="inline-block">
-							{word.split('').map((char, j) => (
-								<motion.span
-									key={j}
-									custom={i * 6 + j}
-									initial={{ opacity: 0, y: 50 }}
-									animate={textControls}
-									style={{ display: 'inline-block' }}
-								>
-									{char}
-								</motion.span>
-							))}
-							{i < headline.split(' ').length - 1 && (
-								<span>&nbsp;</span>
-							)}
+						<span key={i}>
+							<span className="inline-block">
+								{word.split('').map((char, j) => (
+									<motion.span
+										key={j}
+										custom={i * 6 + j}
+										initial={{ opacity: 0, y: 50 }}
+										animate={textControls}
+										style={{ display: 'inline-block' }}
+									>
+										{char}
+									</motion.span>
+								))}
+							</span>
+							{i < headline.split(' ').length - 1 && ' '}
 						</span>
 					))}
 				</h1>
