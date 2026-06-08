@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Sidebar } from '@/components/sidebar';
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -32,6 +33,7 @@ export default function RootLayout({
 			<body className="min-h-full flex flex-col bg-black text-white">
 				<Sidebar />
 				<main>{children}</main>
+				<Analytics />
 			</body>
 		</html>
 	);
