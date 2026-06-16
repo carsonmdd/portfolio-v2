@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import { experience, type Experience } from '@/lib/experience';
@@ -29,11 +28,9 @@ function Meta({ exp }: { exp: Experience }) {
 			)}
 			{exp.logo && (
 				<div className="mt-5 h-12 w-12 overflow-hidden rounded-full">
-					<Image
+					<img
 						src={exp.logo}
 						alt=""
-						width={48}
-						height={48}
 						className="h-full w-full object-contain"
 					/>
 				</div>

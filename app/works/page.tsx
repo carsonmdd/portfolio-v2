@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import Image from 'next/image';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { projects, type Project } from '@/lib/projects';
 import { Section } from '@/components/sections/section';
@@ -61,12 +60,10 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 							viewport={VIEWPORT}
 							transition={{ duration: 1, ease: EASE }}
 						>
-							<Image
+							<img
 								src={project.thumbnail}
 								alt={project.alt}
-								fill
-								className="object-cover"
-								sizes="(max-width: 768px) 100vw, 58vw"
+								className="absolute inset-0 h-full w-full object-cover"
 							/>
 						</motion.div>
 					</div>

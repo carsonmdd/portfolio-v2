@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { Education } from '@/components/sections/education';
 import { Experience } from '@/components/sections/experience';
 import { Skills } from '@/components/sections/skills';
@@ -12,14 +11,10 @@ const About = () => {
 				<div className="flex flex-col items-center justify-center gap-12 lg:flex-row md:gap-20 xl:px-32">
 					<div className="mx-auto w-64 shrink-0 md:mx-0 md:w-80">
 						<div className="relative aspect-3/4 overflow-hidden rounded-md border border-white/10">
-							<Image
+							<img
 								src="/images/profile.jpeg"
 								alt="Carson Davis"
-								fill
-								priority
-								quality={100}
-								className="object-cover"
-								sizes="(max-width: 768px) 16rem, 40rem"
+								className="absolute inset-0 h-full w-full object-cover"
 							/>
 						</div>
 					</div>

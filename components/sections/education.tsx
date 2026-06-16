@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { education } from '@/lib/education';
 import { Section } from './section';
 
@@ -14,11 +13,9 @@ export function Education() {
 						<div className="flex items-start gap-6 md:col-span-4">
 							{entry.logo && (
 								<div className="mt-1 h-12 w-12 overflow-hidden rounded-full">
-									<Image
+									<img
 										src={entry.logo}
 										alt=""
-										width={48}
-										height={48}
 										className="h-full w-full object-contain"
 									/>
 								</div>

@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import MasonryGrid from '@/components/masonry-grid';
 
 type Photo = { src: string; alt: string; aspectRatio: number };
@@ -12,14 +11,14 @@ export function GalleryGrid({ photos }: { photos: Photo[] }) {
 			columns={3}
 			gap={24}
 			renderItem={(photo) => (
-				<figure className="overflow-hidden rounded-sm">
-					<Image
+				<figure
+					className="overflow-hidden rounded-sm"
+					style={{ aspectRatio: `1 / ${photo.aspectRatio}` }}
+				>
+					<img
 						src={photo.src}
 						alt={photo.alt}
-						width={0}
-						height={0}
-						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-						className="w-full h-auto object-cover"
+						className="w-full h-full object-cover"
 					/>
 				</figure>
 			)}
