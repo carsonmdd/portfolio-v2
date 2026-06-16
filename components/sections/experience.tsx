@@ -120,8 +120,7 @@ export function Experience() {
 				/>
 
 				<ul>
-					{experience.map((exp, i) => {
-						const metaLeft = i % 2 === 0;
+					{experience.map((exp) => {
 						return (
 							<li
 								key={exp.role}
@@ -138,11 +137,7 @@ export function Experience() {
 									}}
 									className="flex flex-col items-end pr-10 text-right"
 								>
-									{metaLeft ? (
-										<Meta exp={exp} />
-									) : (
-										<Desc exp={exp} />
-									)}
+									<Meta exp={exp} />
 								</motion.div>
 
 								<motion.div
@@ -156,11 +151,7 @@ export function Experience() {
 									}}
 									className="flex flex-col items-start pl-10 text-left"
 								>
-									{metaLeft ? (
-										<Desc exp={exp} />
-									) : (
-										<Meta exp={exp} />
-									)}
+									<Desc exp={exp} />
 								</motion.div>
 							</li>
 						);
