@@ -33,7 +33,6 @@ export const projects: Project[] = [
 		description:
 			'AI interview simulator built with Next.js, TypeScript, Google Gemini, and PostgreSQL',
 		repoLink: 'https://github.com/carsonmdd/evalai',
-		demoLink: 'https://evalai-gamma.vercel.app',
 	},
 	{
 		thumbnail: '/images/thumbnails/dionysus-thumbnail.png',
@@ -42,7 +41,6 @@ export const projects: Project[] = [
 		description:
 			'AI GitHub assistant web app built with Next.js, Google Gemini, AssemblyAI, and Stripe',
 		repoLink: 'https://github.com/carsonmdd/dionysus',
-		demoLink: 'https://dionysus-kappa.vercel.app',
 	},
 	{
 		thumbnail: '/images/thumbnails/shelterfy-thumbnail.png',
