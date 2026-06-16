@@ -10,6 +10,7 @@ import { site } from '@/lib/site';
 export default function Home() {
 	const textControls = useAnimation();
 	const buttonControls = useAnimation();
+	const shineControls = useAnimation();
 
 	useEffect(() => {
 		textControls.start((i) => ({
@@ -71,9 +72,24 @@ export default function Home() {
 						href="/works"
 						initial={{ opacity: 0 }}
 						animate={buttonControls}
-						className="rounded-full border-2 border-white/20 bg-white/10 px-8 py-3 font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
+						onHoverStart={() =>
+							shineControls.start({
+								x: '200%',
+								transition: {
+									duration: 0.5,
+									ease: 'easeInOut',
+								},
+							})
+						}
+						onHoverEnd={() => shineControls.set({ x: '-100%' })}
+						className="relative overflow-hidden rounded-full border-2 border-white/20 bg-white/10 px-8 py-3 font-medium text-white backdrop-blur-sm"
 						style={{ display: 'inline-block' }}
 					>
+						<motion.span
+							className="pointer-events-none absolute inset-0 -skew-x-12 bg-linear-to-r from-transparent via-white/25 to-transparent"
+							initial={{ x: '-100%' }}
+							animate={shineControls}
+						/>
 						View Work
 					</MotionLink>
 				</div>
