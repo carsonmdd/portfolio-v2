@@ -151,12 +151,27 @@ const WovenCanvas = () => {
 		);
 		geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
+		const spriteCanvas = document.createElement('canvas');
+		spriteCanvas.width = 64;
+		spriteCanvas.height = 64;
+		const spriteCtx = spriteCanvas.getContext('2d')!;
+		const gradient = spriteCtx.createRadialGradient(32, 32, 0, 32, 32, 32);
+		gradient.addColorStop(0, 'rgba(255,255,255,1)');
+		gradient.addColorStop(1, 'rgba(255,255,255,0)');
+		spriteCtx.fillStyle = gradient;
+		spriteCtx.arc(32, 32, 32, 0, Math.PI * 2);
+		spriteCtx.fill();
+		const particleTexture = new THREE.CanvasTexture(spriteCanvas);
+
 		const material = new THREE.PointsMaterial({
 			size: 0.02,
 			vertexColors: true,
 			blending: THREE.NormalBlending,
 			transparent: true,
 			opacity: 0,
+			map: particleTexture,
+			alphaTest: 0.001,
+			depthWrite: false,
 		});
 
 		const points = new THREE.Points(geometry, material);
@@ -267,6 +282,7 @@ const WovenCanvas = () => {
 			geometry.dispose();
 			torusKnot.dispose();
 			material.dispose();
+			particleTexture.dispose();
 			renderer.dispose();
 			timer.dispose();
 		};
