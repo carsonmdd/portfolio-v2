@@ -1,7 +1,6 @@
 export type Experience = {
 	role: string;
 	company: string;
-	type?: string;
 	dates: string;
 	location?: string;
 	description: string;
@@ -12,7 +11,6 @@ export const experience: Experience[] = [
 	{
 		role: 'Full-stack Developer',
 		company: 'Commit the Change, UCI',
-		type: 'Part-time',
 		dates: 'Oct 2025 — Present',
 		location: 'Irvine, California',
 		description:
@@ -32,7 +30,6 @@ export const experience: Experience[] = [
 		role: 'Learning Assistant',
 		company:
 			'UC Irvine Donald Bren School of Information and Computer Sciences',
-		type: 'Part-time',
 		dates: 'Jun 2025 — Dec 2025',
 		location: 'Irvine, California',
 		description:

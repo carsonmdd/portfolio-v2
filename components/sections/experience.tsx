@@ -21,13 +21,8 @@ function Meta({ exp }: { exp: Experience }) {
 				{exp.role}
 			</h3>
 			<p className="mt-1 text-base text-accent">{exp.company}</p>
-			{exp.type && (
-				<p className="mt-1 text-xs uppercase tracking-[0.2em] text-white/50">
-					{exp.type}
-				</p>
-			)}
 			{exp.logo && (
-				<div className="mt-5 h-12 w-12 overflow-hidden rounded-full">
+				<div className="mt-3 h-12 w-12 overflow-hidden rounded-full">
 					<img
 						src={exp.logo}
 						alt=""
